@@ -9,12 +9,12 @@ variable "instance_type" {
 
 }
 
-variable "sg-name" {
+variable "sgn" {
     type = string
   default = "allow_all"
 }
 
-variable "sg-description" {
+variable "sgd" {
     type = string
   default = "allow_all"
 }

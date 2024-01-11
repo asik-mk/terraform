@@ -8,8 +8,8 @@ resource "aws_instance" "web" {
 }
 
 resource "aws_security_group" "allow_all" {
-  name        = var.sg.name
-  description = var.sg.description
+  name        = var.sgn
+  description = var.sgd
   # vpc_id      = aws_vpc.main.id
 
   ingress {
