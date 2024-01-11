@@ -8,14 +8,14 @@ resource "aws_instance" "web" {
 }
 
 resource "aws_security_group" "allow_all" {
-  name        = "allow_all"
-  description = "Allow all inbound traffic"
+  name        = var.sg.name
+  description = var.sg.description
   # vpc_id      = aws_vpc.main.id
 
   ingress {
     description      = "TLS from VPC"
-    from_port        = 0
-    to_port          = 0
+    from_port        = var.inbound_from_port
+    to_port          = var.inbound_to_port
     protocol         = "tcp"
     cidr_blocks      = ["0.0.0.0/0"]
     # ipv6_cidr_blocks = [aws_vpc.main.ipv6_cidr_block]
@@ -26,7 +26,7 @@ resource "aws_security_group" "allow_all" {
     to_port          = 0
     protocol         = "-1"
     cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
+    # ipv6_cidr_blocks = ["::/0"]
   }
 
   tags = {
